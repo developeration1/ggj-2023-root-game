@@ -18,4 +18,14 @@ public class LevelGenerator : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+
+    public LevelLayer GetLayerByName(string name)
+    {
+        foreach (LevelLayer layer in levelLayers)
+        {
+            if(layer.name.Equals(name))
+                return layer;
+        }
+        return null;
+    }
 }

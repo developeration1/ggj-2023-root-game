@@ -20,12 +20,14 @@ public class GameManager : MonoBehaviour
     public ScoreManager scoreManager;
     public GameStateManager gameStateManager;
     public LifeManager lifeManager;
+    public LevelManager levelManager;
 
     private void Awake()
     {
         scoreManager = GetComponent<ScoreManager>();
         lifeManager = GetComponent<LifeManager>();
         gameStateManager = GetComponent<GameStateManager>();
+        levelManager = GetComponent<LevelManager>();
 
         _instance = this;
     }

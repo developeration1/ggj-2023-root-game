@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
-public class rootController : MonoBehaviour
+public class RootController : MonoBehaviour
 {
     public CharacterController controller;
     public LineRenderer lineRenderer;
     public float movementQuantity = 10;
     private int lineRendererPositions = 1;
     private Vector3 movementOutput;
+
+    Tilemap routeTilemap;
+
     // Start is called before the first frame update
     void Start()
     {
+        routeTilemap = GameManager.Instance.levelManager.GetLayerByName("Route").LayerMap;
         lineRenderer.SetPosition(lineRendererPositions - 1, controller.transform.position);
         movementOutput = new Vector3(0, -1, 0) * movementQuantity;
         MoveRoot();
@@ -32,7 +37,7 @@ public class rootController : MonoBehaviour
         {
             Vector2 movementInput = context.ReadValue<Vector2>();
             Debug.Log(movementInput);
-            if (movementOutput.x == null || movementOutput.x == 0 || (movementOutput.x * -1) != movementInput.x)
+            if (movementOutput == null || movementOutput.x == 0 || (movementOutput.x * -1) != movementInput.x)
             {
                 movementOutput = new Vector3(movementInput.x, movementInput.y, 0) * movementQuantity;
             }
