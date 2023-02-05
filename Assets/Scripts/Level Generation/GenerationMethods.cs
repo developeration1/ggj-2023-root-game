@@ -39,6 +39,23 @@ public class GenerationMethods : MonoBehaviour
         }
     }
 
+    public void RockGeneration2(Tile[] tiles, Tilemap tilemap)
+    {
+        Vector2Int backgroundEndPoint = new(Mathf.FloorToInt(backgroundSize.x / 2), 0);
+        Vector2Int backgroundStartPoint = new(-backgroundEndPoint.x, -backgroundSize.y);
+        Tilemap route = GameManager.Instance.levelManager.GetLayerByName("Route").LayerMap;
+        for(int x = backgroundStartPoint.x; x < backgroundEndPoint.x; x++)
+        {
+            for(int y = backgroundStartPoint.y; y < backgroundEndPoint.y; y++)
+            {
+                if(route.HasTile(new Vector3Int(x, y)))
+                {
+                    tilemap.SetTile(new Vector3Int(x, y), null);
+                }
+            }
+        }
+    }
+
     public void RouteGeneration(Tile[] tiles, Tilemap tilemap)
     {
         Vector3Int next = routeStartingPoint;
