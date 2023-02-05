@@ -15,9 +15,45 @@ public class GenerationMethods : MonoBehaviour
     [SerializeField] Vector3Int routeStartingPoint;
     [SerializeField] int routeLength;
 
-    public void RockGeneration(Tile[] tiles, Tilemap tilemap)
+    [Header("Obstacles")]
+    [SerializeField]
+    [Range(0, 1)] float obstaclesThreshold = .5f;
+    [SerializeField] float perlinScale;
+    
+
+    public void RockGeneration1(Tile[] tiles, Tilemap tilemap)
     {
-        
+        Vector2Int backgroundEndPoint = new (Mathf.FloorToInt(backgroundSize.x / 2), 0);
+        Vector2Int backgroundStartPoint = new (-backgroundEndPoint.x, -backgroundSize.y);
+        for(int x = backgroundStartPoint.x; x < backgroundEndPoint.x; x++)
+        {
+            for (int y = backgroundStartPoint.y; y < backgroundEndPoint.y; y++)
+            {
+                Vector2 perlinCoordinates = new((float)x / backgroundSize.x * perlinScale + Random.Range(0, 1000), (float)y / backgroundSize.y * perlinScale + Random.Range(0, 1000));
+                float perlin = Mathf.PerlinNoise(perlinCoordinates.x, perlinCoordinates.y);
+                if(perlin > obstaclesThreshold)
+                {
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tiles[Random.Range(0, tiles.Length)]);
+                }
+            }
+        }
+    }
+
+    public void RockGeneration2(Tile[] tiles, Tilemap tilemap)
+    {
+        Vector2Int backgroundEndPoint = new(Mathf.FloorToInt(backgroundSize.x / 2), 0);
+        Vector2Int backgroundStartPoint = new(-backgroundEndPoint.x, -backgroundSize.y);
+        Tilemap route = GameManager.Instance.levelManager.GetLayerByName("Route").LayerMap;
+        for(int x = backgroundStartPoint.x; x < backgroundEndPoint.x; x++)
+        {
+            for(int y = backgroundStartPoint.y; y < backgroundEndPoint.y; y++)
+            {
+                if(route.HasTile(new Vector3Int(x, y)))
+                {
+                    tilemap.SetTile(new Vector3Int(x, y), null);
+                }
+            }
+        }
     }
 
     public void RouteGeneration(Tile[] tiles, Tilemap tilemap)
@@ -44,8 +80,8 @@ public class GenerationMethods : MonoBehaviour
 
     public void BackgroundGeneration(Tile[] tiles, Tilemap tilemap)
     {
-        Vector2Int backgroundEndPoint = new Vector2Int(Mathf.FloorToInt(backgroundSize.x / 2), 0);
-        Vector2Int backgroundStartPoint = new Vector2Int(-backgroundEndPoint.x, -backgroundSize.y);
+        Vector2Int backgroundEndPoint = new (Mathf.FloorToInt(backgroundSize.x / 2), 0);
+        Vector2Int backgroundStartPoint = new (-backgroundEndPoint.x, -backgroundSize.y);
         for (int x = backgroundStartPoint.x; x < backgroundEndPoint.x; x++)
         {
             for (int y = backgroundStartPoint.y; y < backgroundEndPoint.y; y++)

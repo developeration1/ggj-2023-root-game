@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameStateManager gameStateManager;
     public LifeManager lifeManager;
     public RootController rootManager;
+    public LevelManager levelManager;
 
     private void Awake()
     {
