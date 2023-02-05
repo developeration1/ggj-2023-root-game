@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,19 @@ using UnityEngine.Tilemaps;
 
 public class RootController : MonoBehaviour
 {
-    public CharacterController controller;
+    //public CharacterController controller;
     public LineRenderer lineRenderer;
     public float movementQuantity = 10;
     private int lineRendererPositions = 1;
     private Vector3 movementOutput;
 
-    Tilemap routeTilemap;
+    LevelLayer routeLayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        print(GameManager.Instance);
-        routeTilemap = GameManager.Instance.levelManager.GetLayerByName("Route").LayerMap;
-        lineRenderer.SetPosition(lineRendererPositions - 1, controller.transform.position);
+        routeLayer = GameManager.Instance.levelManager.GetLayerByName("Route");
+        lineRenderer.SetPosition(0, transform.position);
         movementOutput = new Vector3(0, -1, 0) * movementQuantity;
         MoveRoot();
     }
@@ -27,7 +27,7 @@ public class RootController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        lineRenderer.SetPosition(lineRendererPositions - 1, transform.position);
     }
 
 
@@ -62,10 +62,13 @@ public class RootController : MonoBehaviour
 
     public void MoveRoot()
     {
+        //transform.Translate(movementOutput);
         lineRendererPositions++;
         lineRenderer.positionCount = lineRendererPositions;
-        controller.Move(movementOutput);
-        lineRenderer.SetPosition(lineRendererPositions - 1, controller.transform.position);
+        transform.DOMove(transform.position + movementOutput, .2f).SetEase(Ease.InCirc);
+        // transform.DOMove(movementOutput + transform.position, 1, true).SetEase(Ease.InCubic);
+       // controller.Move(movementOutput);
+        //lineRenderer.SetPosition(lineRendererPositions - 1, controller.transform.position);
     }
 
     private void OnTriggerEnter(Collider other)
