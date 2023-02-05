@@ -47,3 +47,5 @@ MonoBehaviour:
   backgroundSize: {x: 70, y: 100}
   routeStartingPoint: {x: 0, y: 0, z: 0}
   routeLength: 100
+  obstaclesThreshold: 0.6
+  perlinScale: 50

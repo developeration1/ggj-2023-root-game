@@ -123,75 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &190381064
-PrefabInstance:
+--- !u!1 &809706768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2469358367666954840, guid: c95be0ddf66993e49bdf9dd90a5e9eec,
+    type: 3}
+  m_PrefabInstance: {fileID: 2031583505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &809706770
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: c54be280b46084f4dbff160ac443ff22,
-        type: 3}
-      propertyPath: m_Name
-      value: arbol chico
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c54be280b46084f4dbff160ac443ff22, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809706768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d204b8cbcc10b1449b2711d8e62cb1fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1043231360
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +201,7 @@ MonoBehaviour:
   levelLayers:
   - {fileID: 11400000, guid: 2b96a0824598530459d97e9211fa7ff9, type: 2}
   - {fileID: 11400000, guid: 502c549c8f453624ab7c41655b168583, type: 2}
+  - {fileID: 11400000, guid: 43ba5204f35554f4e8d497a2f48adc82, type: 2}
 --- !u!1 &1342854133
 GameObject:
   m_ObjectHideFlags: 0

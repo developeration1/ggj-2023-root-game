@@ -25,7 +25,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2602320126925075348, guid: 387cd3a67b90089489f643f76c35d94e,
           type: 3}
         m_TargetAssemblyTypeName: GenerationMethods, Assembly-CSharp
-        m_MethodName: RockGeneration
+        m_MethodName: RockGeneration1
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35,5 +35,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  prefabMap: {fileID: 1401256442701426162, guid: 75b3b522035c05847860eb93685b9ebb,
+  prefabMap: {fileID: 1401256442701426162, guid: d5f23cecc97d3ff42a5161f1be41793e,
     type: 3}

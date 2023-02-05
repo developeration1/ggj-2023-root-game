@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         scoreManager = GetComponent<ScoreManager>();
         lifeManager = GetComponent<LifeManager>();
         gameStateManager = GetComponent<GameStateManager>();
-        levelManager = GetComponent<LevelManager>();
 
         _instance = this;
     }
