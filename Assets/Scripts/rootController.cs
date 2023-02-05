@@ -36,6 +36,7 @@ public class rootController : MonoBehaviour
             {
                 movementOutput = new Vector3(movementInput.x, movementInput.y, 0) * movementQuantity;
             }
+            MoveRoot();
         }
     }
 
@@ -50,7 +51,6 @@ public class rootController : MonoBehaviour
             //{
 
             //}
-            MoveRoot();
         }
     }
 
