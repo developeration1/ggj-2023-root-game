@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Has the current life status and methods to update it.
+ */
 public class LifeManager : MonoBehaviour
 {
     

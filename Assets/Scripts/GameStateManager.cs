@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Has the current game status and methods to update it.
+ */
 public class GameStateManager : MonoBehaviour
 {
     enum GameState { Playing, GameOver, Won, Paused };

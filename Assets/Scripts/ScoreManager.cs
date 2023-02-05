@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Has the current score status and methods to update it.
+ */
 public class ScoreManager : MonoBehaviour
 {
     public float completionPercentage = 0;
