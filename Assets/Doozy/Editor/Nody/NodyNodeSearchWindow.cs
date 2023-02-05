@@ -50,6 +50,8 @@ namespace Doozy.Editor.Nody
             var tree = new List<SearchTreeEntry>()
             {
                 new SearchTreeGroupEntry(new GUIContent("Create Node", EditorTextures.Nody.Icons.Infinity), 0),
+                new SearchTreeGroupEntry(new GUIContent("Custom"), 1),
+                new SearchTreeEntry(new GUIContent("Note", transparentIcon)) { userData = new NodeTypeInfo(typeof(Doozy.Runtime.Nody.Nodes.NoteNode)), level = 2 },
                 new SearchTreeGroupEntry(new GUIContent("Scene Management"), 1),
                 new SearchTreeEntry(new GUIContent("Activate Loaded Scenes", transparentIcon)) { userData = new NodeTypeInfo(typeof(Doozy.Runtime.SceneManagement.Nodes.ActivateLoadedScenesNode)), level = 2 },
                 new SearchTreeEntry(new GUIContent("Load Scene", transparentIcon)) { userData = new NodeTypeInfo(typeof(Doozy.Runtime.SceneManagement.Nodes.LoadSceneNode)), level = 2 },
@@ -77,6 +79,7 @@ namespace Doozy.Editor.Nody
             if (!(searchTreeEntry.userData is NodeTypeInfo nodeInfo))
                 return false;
             
+            if(nodeInfo.type == typeof(Doozy.Runtime.Nody.Nodes.NoteNode)) { graphView.CreateNode(typeof(Doozy.Runtime.Nody.Nodes.NoteNode), true); return true;}
             if(nodeInfo.type == typeof(Doozy.Runtime.SceneManagement.Nodes.ActivateLoadedScenesNode)) { graphView.CreateNode(typeof(Doozy.Runtime.SceneManagement.Nodes.ActivateLoadedScenesNode), true); return true;}
             if(nodeInfo.type == typeof(Doozy.Runtime.SceneManagement.Nodes.LoadSceneNode)) { graphView.CreateNode(typeof(Doozy.Runtime.SceneManagement.Nodes.LoadSceneNode), true); return true;}
             if(nodeInfo.type == typeof(Doozy.Runtime.SceneManagement.Nodes.UnloadSceneNode)) { graphView.CreateNode(typeof(Doozy.Runtime.SceneManagement.Nodes.UnloadSceneNode), true); return true;}

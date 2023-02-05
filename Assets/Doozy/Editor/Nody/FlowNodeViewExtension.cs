@@ -25,6 +25,7 @@ namespace Doozy.Editor.Nody
                 Doozy.Runtime.SceneManagement.Nodes.UnloadSceneNode _ => new Doozy.Editor.SceneManagement.Nodes.UnloadSceneNodeView(graphView, node),
                 Doozy.Runtime.Nody.Nodes.ApplicationQuitNode _ => new Doozy.Editor.Nody.Nodes.ApplicationQuitNodeView(graphView, node),
                 Doozy.Runtime.Nody.Nodes.DebugNode _ => new Doozy.Editor.Nody.Nodes.DebugNodeView(graphView, node),
+                Doozy.Runtime.Nody.Nodes.NoteNode _ => new Doozy.Editor.Nody.Nodes.NoteNodeView(graphView, node),
                 Doozy.Runtime.Nody.Nodes.PivotNode _ => new Doozy.Editor.Nody.Nodes.PivotNodeView(graphView, node),
                 Doozy.Runtime.Nody.Nodes.RandomNode _ => new Doozy.Editor.Nody.Nodes.RandomNodeView(graphView, node),
                 Doozy.Runtime.Nody.Nodes.StickyNoteNode _ => new Doozy.Editor.Nody.Nodes.StickyNoteNodeView(graphView, node),

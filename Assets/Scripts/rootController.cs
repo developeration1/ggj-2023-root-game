@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
-public class rootController : MonoBehaviour
+public class RootController : MonoBehaviour
 {
     public CharacterController controller;
     public LineRenderer lineRenderer;
     public float movementQuantity = 10;
     private int lineRendererPositions = 1;
     private Vector3 movementOutput;
+
+    public event Action PlayerMoved = delegate { };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +35,22 @@ public class rootController : MonoBehaviour
         if (context.started)
         {
             Vector2 movementInput = context.ReadValue<Vector2>();
-            Debug.Log(movementInput);
-            if (movementOutput.x == null || movementOutput.x == 0 || (movementOutput.x * -1) != movementInput.x)
+            if(HasInputValidValue(movementInput))
             {
                 movementOutput = new Vector3(movementInput.x, movementInput.y, 0) * movementQuantity;
+                // Call method.
+                PlayerMoved.Invoke();
             }
             MoveRoot();
         }
+    }
+
+    public bool HasInputValidValue(Vector2 movementInput)
+    {
+        if (movementOutput.x == 0 || (movementOutput.x * -1 != movementInput.x))
+            return true;
+
+        return false;
     }
 
     public void BeatPress(InputAction.CallbackContext context)

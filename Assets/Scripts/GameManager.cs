@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public ScoreManager scoreManager;
     public GameStateManager gameStateManager;
     public LifeManager lifeManager;
+    public RootController rootManager;
 
     private void Awake()
     {
