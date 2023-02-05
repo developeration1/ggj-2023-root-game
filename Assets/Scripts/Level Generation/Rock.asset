@@ -12,6 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48be41edee18210478c865b63d83ba07, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  tiles: []
-  generators: []
-  prefabMap: {fileID: 0}
+  tiles:
+  - {fileID: 11400000, guid: f8d7d33fe11c8344a98cee1747370816, type: 2}
+  - {fileID: 11400000, guid: b0e42cbcb7a4e9446a784726ac7b49f6, type: 2}
+  - {fileID: 11400000, guid: 3ad7dd32b931017489f8949bd6abef47, type: 2}
+  - {fileID: 11400000, guid: dc82597b63092ef4ba655c020781d1e3, type: 2}
+  - {fileID: 11400000, guid: f27ddcb2d59a05646888c51f2846d2c1, type: 2}
+  - {fileID: 11400000, guid: 3638f5dd9b26a024ba7219a01e1717be, type: 2}
+  generators:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2602320126925075348, guid: 387cd3a67b90089489f643f76c35d94e,
+          type: 3}
+        m_TargetAssemblyTypeName: GenerationMethods, Assembly-CSharp
+        m_MethodName: RockGeneration1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2602320126925075348, guid: 387cd3a67b90089489f643f76c35d94e,
+          type: 3}
+        m_TargetAssemblyTypeName: GenerationMethods, Assembly-CSharp
+        m_MethodName: RockGeneration2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  prefabMap: {fileID: 1401256442701426162, guid: d5f23cecc97d3ff42a5161f1be41793e,
+    type: 3}
