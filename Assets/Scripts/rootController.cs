@@ -27,9 +27,10 @@ public class rootController : MonoBehaviour
 
     public void RootDirection(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
             Vector2 movementInput = context.ReadValue<Vector2>();
+            Debug.Log(movementInput);
             if (movementOutput.x == null || movementOutput.x == 0 || (movementOutput.x * -1) != movementInput.x)
             {
                 movementOutput = new Vector3(movementInput.x, movementInput.y, 0) * movementQuantity;
@@ -39,7 +40,7 @@ public class rootController : MonoBehaviour
 
     public void BeatPress(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
             //if(not on time){
             //controller.Move hacia abajo
