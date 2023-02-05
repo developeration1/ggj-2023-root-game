@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48be41edee18210478c865b63d83ba07, type: 3}
+  m_Name: Background
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 13328fc539695bb4796930b7e865589d, type: 2}
+  generators:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2602320126925075348, guid: 387cd3a67b90089489f643f76c35d94e,
+          type: 3}
+        m_TargetAssemblyTypeName: GenerationMethods, Assembly-CSharp
+        m_MethodName: BackgroundGeneration
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  prefabMap: {fileID: 1401256442701426162, guid: 75b3b522035c05847860eb93685b9ebb,
+    type: 3}
