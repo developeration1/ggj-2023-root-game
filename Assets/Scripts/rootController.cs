@@ -15,6 +15,8 @@ public class RootController : MonoBehaviour
 
     LevelLayer routeLayer;
 
+    bool canMove = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class RootController : MonoBehaviour
 
     public void RootDirection(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && canMove)
         {
             Vector2 movementInput = context.ReadValue<Vector2>();
             Debug.Log(movementInput);
@@ -46,45 +48,17 @@ public class RootController : MonoBehaviour
         }
     }
 
-    public void BeatPress(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            //if(not on time){
-            //controller.Move hacia abajo
-            //quita vida
-            //}else
-            //{
-
-            //}
-        }
-    }
-
     public void MoveRoot()
     {
-        //transform.Translate(movementOutput);
-        lineRendererPositions++;
-        lineRenderer.positionCount = lineRendererPositions;
-        transform.DOMove(transform.position + movementOutput, .2f).SetEase(Ease.InCirc);
-        // transform.DOMove(movementOutput + transform.position, 1, true).SetEase(Ease.InCubic);
-       // controller.Move(movementOutput);
-        //lineRenderer.SetPosition(lineRendererPositions - 1, controller.transform.position);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log("Hubo colision con " + other.tag);
-        string tag = other.tag;
-        switch (tag.ToLower())
+        if(canMove)
         {
-            case "agua":
-                Debug.Log("Es agua");
-            break;
-            case "piedra":
-                Debug.Log("Es piedra");
-            break;
-
+            lineRendererPositions++;
+            lineRenderer.positionCount = lineRendererPositions;
+            canMove = false;
+            transform.DOMove(transform.position + movementOutput, .2f).SetEase(Ease.InCirc).OnComplete(() =>
+            {
+                canMove = true;
+            });
         }
-            
     }
 }
