@@ -35,7 +35,7 @@ public class LifeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.value = currentLife / 100;
+        slider.value =  currentLife / 100;
     }
 
     /**
@@ -47,7 +47,7 @@ public class LifeManager : MonoBehaviour
         float addedLife = currentLife + BaseLifeAddition;
         if (addedLife < MaxLife)
         {
-            currentLife += addedLife;
+            currentLife = addedLife;
         }
     }
 
@@ -71,7 +71,7 @@ public class LifeManager : MonoBehaviour
      */
     public void MissedRythm()
     {
-        SubtractLife(currentLife - BaseLifeSubtraction);
+        SubtractLife(BaseLifeSubtraction);
     }
 
     /**
@@ -79,6 +79,6 @@ public class LifeManager : MonoBehaviour
      */
     public void HitObstacle()
     {
-        SubtractLife(currentLife - ObstacleSubtraction);
+        SubtractLife(ObstacleSubtraction);
     }
 }

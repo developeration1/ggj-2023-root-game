@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
      *** Constants ***
      *****************/
 
-    const int TotalNotes = 500;
+    const int TotalNotes = 200;
     const int MaxStars = 3;
     const int MaxStreak = 8;
     const int MaxMultiplier = 4;
@@ -55,6 +55,7 @@ public class ScoreManager : MonoBehaviour
                 multiplier++;
             }
         }
+        UpdatePercentage();
     }
 
     /**
@@ -70,7 +71,7 @@ public class ScoreManager : MonoBehaviour
      */
     public void UpdatePercentage()
     {
-        completionPercentage = TotalNotes * 100 / hitNotes;
+        completionPercentage = hitNotes * 100 / TotalNotes ;
         stars = completionPercentage / MaxStars;
 
     }

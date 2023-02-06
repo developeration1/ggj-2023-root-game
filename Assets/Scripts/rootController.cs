@@ -20,6 +20,7 @@ public class RootController : MonoBehaviour
     LevelLayer routeLayer;
     LevelLayer rockLayer;
     public event Action PlayerMoved = delegate { };
+    bool canMove = false;
 
 
     // Start is called before the first frame update

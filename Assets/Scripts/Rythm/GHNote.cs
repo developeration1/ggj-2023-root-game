@@ -7,17 +7,20 @@ public class GHNote : MonoBehaviour
     public int BPM;
     private float speed;
     public float factor = 1;
+    public bool played = false;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = BPM * factor;
         GameManager.Instance.gameStateManager.GameStateChanged += HandleSongState;
+        GameManager.Instance.rootManager.PlayerMoved += PlayNote;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.gameStateManager.GameStateChanged -= HandleSongState;
+        GameManager.Instance.rootManager.PlayerMoved -= PlayNote;
     }
 
     public void HandleSongState(GameStateManager.GameState gameState)
@@ -59,10 +62,18 @@ public class GHNote : MonoBehaviour
             || collision.CompareTag("NiceNote")
             || collision.CompareTag("MissedNote"))
         {
-
+            played = true;
         }
     }
 
+
+    public void PlayNote()
+    {
+        if (played)
+        {
+            GameManager.Instance.scoreManager.IncreaseHitNotes();
+        }
+    }
 
     /*
         else if (collision.gameObject.tag == "PerfectNote")
