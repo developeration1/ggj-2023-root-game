@@ -14,7 +14,9 @@ namespace Doozy.Runtime.UIManager.Containers
 {
     public partial class UIView
     {
-//ACCESSOR//
+        public static IEnumerable<UIView> GetViews(UIViewId.Game id) => GetViews(nameof(UIViewId.Game), id.ToString());
+        public static void Show(UIViewId.Game id, bool instant = false) => Show(nameof(UIViewId.Game), id.ToString(), instant);
+        public static void Hide(UIViewId.Game id, bool instant = false) => Hide(nameof(UIViewId.Game), id.ToString(), instant);
     }
 }
 
@@ -22,6 +24,11 @@ namespace Doozy.Runtime.UIManager
 {
     public partial class UIViewId
     {
-//DATA//    
+        public enum Game
+        {
+            Focus,
+            Game,
+            Intro
+        }    
     }
 }

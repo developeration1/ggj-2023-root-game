@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Database:
     Items:
+    - Category: Camera
+      Name: SetTo
     - Category: None
       Name: None
