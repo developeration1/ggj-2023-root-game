@@ -52,6 +52,17 @@ public class GHNote : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PerfectNote")
+            || collision.CompareTag("GoodNote")
+            || collision.CompareTag("NiceNote")
+            || collision.CompareTag("MissedNote"))
+        {
+
+        }
+    }
+
 
     /*
         else if (collision.gameObject.tag == "PerfectNote")

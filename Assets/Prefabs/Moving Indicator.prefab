@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16470587, g: 0.94509804, b: 0.16859955, a: 1}
+  m_Color: {r: 0.16470587, g: 0.94509804, b: 0.16859955, a: 0.22745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -308,7 +308,7 @@ MonoBehaviour:
       StartScale: {x: 3, y: 3, z: 1}
       FromReferenceValue: 2
       ToReferenceValue: 2
-      FromCustomValue: {x: 3, y: 3, z: 1}
+      FromCustomValue: {x: 10, y: 10, z: 1}
       ToCustomValue: {x: 0, y: 0, z: 1}
       FromOffset: {x: 0, y: 0, z: 0}
       ToOffset: {x: 0, y: 0, z: 0}

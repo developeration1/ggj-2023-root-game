@@ -14,6 +14,7 @@ public class SongManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         GameManager.Instance.gameStateManager.GameStateChanged += HandleSongState;
+        StartCoroutine(ExampleCoroutine());
     }
 
     private void OnDisable()
@@ -39,5 +40,12 @@ public class SongManager : MonoBehaviour
         Note note = gmObject.GetComponent<Note>();
 
         notes.Add(note);
+    }
+
+    IEnumerator ExampleCoroutine()
+    {
+        yield return new WaitForSeconds(98);
+
+        GameManager.Instance.gameStateManager.Win();
     }
 }
