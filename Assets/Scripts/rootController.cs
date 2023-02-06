@@ -17,6 +17,8 @@ public class rootController : MonoBehaviour
     LevelLayer routeLayer;
     LevelLayer rockLayer;
 
+    bool canMove = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +68,7 @@ public class rootController : MonoBehaviour
 
     public void RootDirection(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && canMove)
         {
             Vector2 movementInput = context.ReadValue<Vector2>();
             if (movementOutput == null || movementOutput.x == 0 || (movementOutput.x * -1) != movementInput.x)
@@ -79,16 +81,16 @@ public class rootController : MonoBehaviour
 
     public void MoveRoot()
     {
-        //transform.Translate(movementOutput);
-        lineRendererPositions++;
-        lineRenderer.positionCount = lineRendererPositions;
-        
-        transform.DOMove(transform.position + movementOutput, .2f).SetEase(Ease.InCirc).OnComplete(() => {
-            moved = true;
+        if(canMove)
+        {
+            lineRendererPositions++;
+            lineRenderer.positionCount = lineRendererPositions;
+            canMove = false;
+            transform.DOMove(transform.position + movementOutput, .2f).SetEase(Ease.InCirc).OnComplete(() =>
+            {
+                canMove = true;
+                moved = true;
+            });
         }
-            );
-        // transform.DOMove(movementOutput + transform.position, 1, true).SetEase(Ease.InCubic);
-       // controller.Move(movementOutput);
-        //lineRenderer.SetPosition(lineRendererPositions - 1, controller.transform.position);
     }
 }
