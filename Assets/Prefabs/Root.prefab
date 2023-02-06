@@ -295,7 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0099e0ea9cd340c45b7e69d371730ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 4372155704224645742}
   lineRenderer: {fileID: 4372155704224645743}
   movementQuantity: 1
 --- !u!143 &4372155704224645742
@@ -307,7 +306,7 @@ CharacterController:
   m_GameObject: {fileID: 4372155704224645732}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1
   m_Radius: 0.5
@@ -336,7 +335,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: acd2637e566c1724c9a9aed984e899fa, type: 2}
+  - {fileID: 2100000, guid: c09abf9a552d8b04c97a1afa697e56f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -358,6 +357,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3

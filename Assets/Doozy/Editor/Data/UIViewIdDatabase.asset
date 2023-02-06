@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Database:
     Items:
+    - Category: Game
+      Name: Focus
+    - Category: Game
+      Name: Game
+    - Category: Game
+      Name: Intro
     - Category: None
       Name: None

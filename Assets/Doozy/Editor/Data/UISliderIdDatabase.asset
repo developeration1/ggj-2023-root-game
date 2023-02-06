@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Database:
     Items:
+    - Category: Game
+      Name: WaterLevel
     - Category: None
       Name: None
