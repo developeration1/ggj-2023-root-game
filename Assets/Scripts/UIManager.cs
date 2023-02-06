@@ -4,15 +4,16 @@ using UnityEngine;
 using TMPro;
 public class UIManager : MonoBehaviour
 {
-    //public TMP_Text waterText;
+    [SerializeField] TMP_Text completionText;
 
     private void Update()
     {
-        UpdateWaterUI(GameManager.Instance.lifeManager.currentLife);
+        // UpdateWaterUI(GameManager.Instance.lifeManager.currentLife);
+
     }
 
-    public void UpdateWaterUI(float waterQuantity)
+    public void UpdateCompletion(float completion)
     {
-        //waterText.text = "Water:" + waterQuantity.ToString();
+        completionText.text = completion.ToString() + "%";
     }
 }

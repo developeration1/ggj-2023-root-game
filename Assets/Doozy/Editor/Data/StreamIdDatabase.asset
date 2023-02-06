@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: StreamIdDatabase
   m_EditorClassIdentifier: 
   Database:
-    Items: []
+    Items:
+    - Category: Camera
+      Name: SetTo
+    - Category: None
+      Name: None
