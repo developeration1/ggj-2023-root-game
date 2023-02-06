@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        // UpdateWaterUI(GameManager.Instance.lifeManager.currentLife);
-
+        //UpdateWaterUI(GameManager.Instance.lifeManager.currentLife);
+        UpdateCompletion(GameManager.Instance.scoreManager.completionPercentage);
     }
 
     public void UpdateCompletion(float completion)

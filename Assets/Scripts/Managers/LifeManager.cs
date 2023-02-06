@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Doozy.Runtime.UIManager.Components;
 using UnityEngine;
 
 /**
@@ -7,7 +8,9 @@ using UnityEngine;
  */
 public class LifeManager : MonoBehaviour
 {
-    
+
+    public UISlider slider;
+
     public float currentLife;
 
     /*****************
@@ -32,7 +35,7 @@ public class LifeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        slider.value = currentLife / 100;
     }
 
     /**
@@ -59,7 +62,7 @@ public class LifeManager : MonoBehaviour
         }
         else
         {
-            // Lose    
+            // Lose
         }
     }
 
