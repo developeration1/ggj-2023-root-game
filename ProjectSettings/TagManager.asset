@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Piedra
   - Agua
+  - StartNote
+  - GoodNote
+  - NiceNote
+  - PerfectNote
+  - MissedNote
   layers:
   - Default
   - TransparentFX

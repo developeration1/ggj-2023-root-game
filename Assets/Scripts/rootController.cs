@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using System;
 
-public class rootController : MonoBehaviour
+public class RootController : MonoBehaviour
 {
     //public CharacterController controller;
     public LineRenderer lineRenderer;
@@ -13,20 +14,26 @@ public class rootController : MonoBehaviour
     private int lineRendererPositions = 1;
     private Vector3 movementOutput;
     private bool moved = false;
+    public float waitTime = 3;
+    public Vector3 initialPosition = new Vector3(0.5f,-1.5f,0);
 
     LevelLayer routeLayer;
     LevelLayer rockLayer;
+    public event Action PlayerMoved = delegate { };
 
-    bool canMove = true;
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
+        transform.position = initialPosition;
         routeLayer = GameManager.Instance.levelManager.GetLayerByName("Route");
         rockLayer = GameManager.Instance.levelManager.GetLayerByName("Rock");
+        canMove = true;
         lineRenderer.SetPosition(0, transform.position);
         movementOutput = new Vector3(0, -1, 0) * movementQuantity;
         MoveRoot();
+        
+        yield return new WaitForSeconds(waitTime);
     }
 
     // Update is called once per frame
@@ -71,17 +78,32 @@ public class rootController : MonoBehaviour
         if (context.started && canMove)
         {
             Vector2 movementInput = context.ReadValue<Vector2>();
-            if (movementOutput == null || movementOutput.x == 0 || (movementOutput.x * -1) != movementInput.x)
+            if(HasInputValidValue(movementInput))
             {
                 movementOutput = new Vector3(movementInput.x, movementInput.y, 0) * movementQuantity;
+                PlayerMoved.Invoke();
+
+                // Start Game on First input.
+                if(GameManager.Instance.gameStateManager.currentState == GameStateManager.GameState.NonPaused)
+                {
+                    GameManager.Instance.gameStateManager.StartLevel();
+                }
             }
             MoveRoot();
         }
     }
 
+    public bool HasInputValidValue(Vector2 movementInput)
+    {
+        if (movementOutput.x == 0 || (movementOutput.x * -1 != movementInput.x))
+            return true;
+
+        return false;
+    }
+
     public void MoveRoot()
     {
-        if(canMove)
+        if (canMove)
         {
             lineRendererPositions++;
             lineRenderer.positionCount = lineRendererPositions;
