@@ -10,12 +10,13 @@ public class RootController : MonoBehaviour
 {
     //public CharacterController controller;
     public LineRenderer lineRenderer;
-    public float movementQuantity = 10;
+    public float movementQuantity = 1;
     private int lineRendererPositions = 1;
     private Vector3 movementOutput;
+    private bool moved = false;
 
     LevelLayer routeLayer;
-    Tilemap routeTilemap;
+    LevelLayer rockLayer;
     public event Action PlayerMoved = delegate { };
 
     bool canMove = true;
@@ -24,6 +25,7 @@ public class RootController : MonoBehaviour
     void Start()
     {
         routeLayer = GameManager.Instance.levelManager.GetLayerByName("Route");
+        rockLayer = GameManager.Instance.levelManager.GetLayerByName("Rock");
         lineRenderer.SetPosition(0, transform.position);
         movementOutput = new Vector3(0, -1, 0) * movementQuantity;
         MoveRoot();
@@ -33,9 +35,38 @@ public class RootController : MonoBehaviour
     void Update()
     {
         lineRenderer.SetPosition(lineRendererPositions - 1, transform.position);
+        collisionDetection();
     }
 
+    public void collisionDetection()
+    {
+        if (moved)
+        {
+            Vector3Int tileLocation = new Vector3Int(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.y), 0);
+            bool hasWater = routeLayer.LayerMap.HasTile(tileLocation);
+            bool hasRock = rockLayer.LayerMap.HasTile(tileLocation);
+            switch(hasWater.ToString().ToLower() + "-" + hasRock.ToString().ToLower())
+            {
+                case "true-false": //Aqui se maneja la colision del agua
+                    Debug.Log("Esto es agua");
+                    routeLayer.LayerMap.SetTile(tileLocation, null);
+                    GameManager.Instance.lifeManager.AddLife();
+                break;
 
+                case "false-true": //Aqui se maneja la colision de las piedras
+                    Debug.Log("Esto es una piedra");
+                    rockLayer.LayerMap.SetTile(tileLocation, null);
+                    GameManager.Instance.lifeManager.HitObstacle();
+                    break;
+
+                default: //Aqui es en la tierra
+                    Debug.Log("Actualmente estas en tierra");
+                    GameManager.Instance.lifeManager.MissedRythm();
+                break;
+            }
+            moved = false;
+        }
+    }
 
     public void RootDirection(InputAction.CallbackContext context)
     {
@@ -75,6 +106,7 @@ public class RootController : MonoBehaviour
             transform.DOMove(transform.position + movementOutput, .2f).SetEase(Ease.InCirc).OnComplete(() =>
             {
                 canMove = true;
+                moved = true;
             });
         }
     }
