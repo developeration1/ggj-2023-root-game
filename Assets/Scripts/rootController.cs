@@ -19,11 +19,8 @@ public class RootController : MonoBehaviour
 
     LevelLayer routeLayer;
     LevelLayer rockLayer;
-
-
     public event Action PlayerMoved = delegate { };
 
-    bool canMove = false;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -84,6 +81,13 @@ public class RootController : MonoBehaviour
             if(HasInputValidValue(movementInput))
             {
                 movementOutput = new Vector3(movementInput.x, movementInput.y, 0) * movementQuantity;
+                PlayerMoved.Invoke();
+
+                // Start Game on First input.
+                if(GameManager.Instance.gameStateManager.currentState == GameStateManager.GameState.NonPaused)
+                {
+                    GameManager.Instance.gameStateManager.StartLevel();
+                }
             }
             MoveRoot();
         }

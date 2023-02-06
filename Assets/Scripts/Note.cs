@@ -11,15 +11,21 @@ public class Note : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movingIndicator = GetComponent<UIAnimator>();    
+        movingIndicator = GetComponent<UIAnimator>();
         GameManager.Instance.rootManager.PlayerMoved += OnPlayerMoved;
     }
 
     private void Update()
     {
-        if (movingIndicator.animation.isPaused)
+        if ((!movingIndicator.animation.Scale.enabled 
+            && movingIndicator.animation.Fade.enabled 
+            && movingIndicator.animation.Fade.isIdle)
+            || (movingIndicator.animation.Scale.enabled 
+            && movingIndicator.animation.Scale.isIdle))
         {
-            Debug.Log("HELLOOO");
+            Note note = GameManager.Instance.songManager.notes[0];
+            GameManager.Instance.songManager.notes.Remove(note);
+            Destroy(note.gameObject);
         }
     }
 
@@ -30,14 +36,12 @@ public class Note : MonoBehaviour
 
     public void OnPlayerMoved()
     {
-        movingIndicator.animation.Scale.Stop();
-        movingIndicator.animation.Scale.enabled = false;
-        movingIndicator.animation.Fade.enabled = true;
-        movingIndicator.animation.Fade.Play();
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
+        if (GameManager.Instance.songManager.notes[0].Equals(this))
+        {
+            movingIndicator.animation.Scale.Stop();
+            movingIndicator.animation.Scale.enabled = false;
+            movingIndicator.animation.Fade.enabled = true;
+            movingIndicator.animation.Fade.Play();
+        }
     }
 }
