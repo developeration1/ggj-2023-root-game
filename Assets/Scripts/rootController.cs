@@ -14,15 +14,12 @@ public class RootController : MonoBehaviour
     private Vector3 movementOutput;
 
     Tilemap routeTilemap;
-
-
     public event Action PlayerMoved = delegate { };
 
     // Start is called before the first frame update
     void Start()
     {
-        print(GameManager.Instance);
-        routeTilemap = GameManager.Instance.levelManager.GetLayerByName("Route").LayerMap;
+        // routeTilemap = GameManager.Instance.levelManager.GetLayerByName("Route").LayerMap;
         lineRenderer.SetPosition(lineRendererPositions - 1, controller.transform.position);
         movementOutput = new Vector3(0, -1, 0) * movementQuantity;
         MoveRoot();
@@ -44,6 +41,13 @@ public class RootController : MonoBehaviour
             if(HasInputValidValue(movementInput))
             {
                 movementOutput = new Vector3(movementInput.x, movementInput.y, 0) * movementQuantity;
+                PlayerMoved.Invoke();
+
+                // Start Game on First input.
+                if(GameManager.Instance.gameStateManager.currentState == GameStateManager.GameState.NonPaused)
+                {
+                    GameManager.Instance.gameStateManager.StartLevel();
+                }
             }
             MoveRoot();
         }
