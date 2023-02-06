@@ -20,5 +20,7 @@ MonoBehaviour:
       Name: Game
     - Category: Game
       Name: Intro
+    - Category: MainMenu
+      Name: MainMenu
     - Category: None
       Name: None
